@@ -48,7 +48,6 @@ class ListController @Inject() (val controllerComponents: ControllerComponents)
   def updateItem(id: Long): Action[AnyContent] = Action { implicit request =>
     val item = list.find(_.id == id);
     val json: JsValue = Json.parse("""{"message": "ID não encontrado"}""")
-
     item match {
       case Some(property) =>
         val newValue = property.copy(done = true)
